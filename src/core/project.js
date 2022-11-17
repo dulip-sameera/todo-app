@@ -8,6 +8,10 @@ export default function createProject(title) {
     return _title;
   };
 
+  const setTitle = (title) => {
+    _title = title;
+  };
+
   const addToDo = ({ title, duedate, priority, status }) => {
     _todoList.add({ title, duedate, priority, status });
   };
@@ -17,13 +21,19 @@ export default function createProject(title) {
   };
 
   const getAllToDos = () => {
-    return _todoList.getList();
+    return _todoList;
+  };
+
+  const edit = (title) => {
+    setTitle(title);
   };
 
   return {
     getTitle,
+    setTitle,
     getAllToDos,
     addToDo,
     removeToDo,
+    edit,
   };
 }
