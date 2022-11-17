@@ -5,34 +5,8 @@ function store(plist) {
   if (plist.length === 0) {
     return;
   }
-  const projectNameList = [];
-  const todoListsOfAllProjects = {};
-
-  // outer loop: add project names to projectNameList array
-  // projectNameList array will be stored in localStorage
-  // projectNameList will be used to store keys of each project that going to
-  // be stored in localStorage
-  for (let i = 0; i < plist.length; i++) {
-    const project = plist[i];
-    projectNameList.push(project.getTitle());
-
-    // inner loop: store all the ToDos in a single project to todos array
-    // which later will assign to todoListsOfAllProjects object with a
-    // key(project title)
-    const todos = [];
-    for (let j = 0; j < project.getAllToDos().length; j++) {
-      const todo = project.getAllToDos()[j];
-      const todoObject = {
-        title: todo.getTitle(),
-        // store the duedate as string according to the defined format
-        duedate: format(todo.getDueDate(), "yyyy-MM-dd"),
-        priority: todo.getPriority(),
-        status: todo.getStatus(),
-      };
-      todos.push(todoObject);
-    }
-    todoListsOfAllProjects[project.getTitle()] = todos;
-  }
+  const projectNameList = _extractProjectNames(plist);
+  const todoListsOfAllProjects = _extractAllToDos(plist);
 
   try {
     // store projectNameList
@@ -101,6 +75,51 @@ function isQuotaExceededError(err) {
       // Firefox
       err.name === "NS_ERROR_DOM_QUOTA_REACHED")
   );
+}
+
+function _extractProjectNames(projectList) {
+  const namesList = [];
+
+  for (let i = 0; i < projectList.getAll().length; i++) {
+    namesList.push(projectList.getByIndex(i).getTitle());
+  }
+
+  return namesList;
+}
+
+function _extractAllToDos(projectList) {
+  const toDos = {};
+
+  for (let i = 0; i < projectList.getAll().length; i++) {
+    const toDoList = [];
+    for (
+      let j = 0;
+      j < projectList.getByIndex(i).getAllToDos().getList().length;
+      j++
+    ) {
+      toDoList.push({
+        title: projectList.getByIndex(i).getAllToDos().getByIndex(j).getTitle(),
+        duedate: format(
+          projectList.getByIndex(i).getAllToDos().getByIndex(j).getDueDate(),
+          "yyyy-MM-dd"
+        ),
+        priority: projectList
+          .getByIndex(i)
+          .getAllToDos()
+          .getByIndex(j)
+          .getPriority(),
+        status: projectList
+          .getByIndex(i)
+          .getAllToDos()
+          .getByIndex(j)
+          .getStatus(),
+      });
+    }
+
+    toDos[projectList.getByIndex(i).getTitle()] = toDoList;
+  }
+
+  return toDos;
 }
 
 export default Storage = {
