@@ -1,0 +1,338 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap");
+
+/* Global Styles */
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --primary-color: #cff4d2;
+  --secondary-color: #204072;
+  --accent-color: #329d9c;
+  --hover-color: #56d596;
+  --danger: #cc2936;
+}
+
+/* Container */
+.container {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  grid-template-rows: 100px 1fr;
+  min-height: 100vh;
+}
+
+/* header */
+.header {
+  grid-column: 1/3;
+  grid-row: 1/2;
+  background-color: var(--secondary-color);
+
+  position: relative;
+}
+
+/* brand */
+.brand {
+  color: var(--primary-color);
+  font-size: 40px;
+  font-weight: 900;
+
+  position: absolute;
+  top: 25px;
+  left: 145px;
+}
+
+.brand:hover {
+  cursor: default;
+}
+
+/* side bar */
+.sidebar {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  background-color: var(--accent-color);
+  border-right: 1px solid var(--secondary-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* today, upcoming */
+.btn {
+  width: 80%;
+  height: 100px;
+  outline: none;
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+
+  font-size: 32px;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.btn:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+  color: var(--secondary-color);
+}
+
+/* projects */
+.projects {
+  width: 80%;
+  height: 100%;
+}
+
+/* project - head */
+.project-head {
+  color: var(--primary-color);
+  font-size: 32px;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-left: 20px;
+  margin-right: 5px;
+}
+
+.project-head button {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  outline: none;
+  border: none;
+  font-size: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.project-head button:hover {
+  background-color: var(--hover-color);
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+/* project items */
+.project-item {
+  font-size: 20px;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 40px;
+  color: var(--primary-color);
+  padding: 5px 8px 5px 10px;
+  border-radius: 5px;
+}
+
+.project-item:hover {
+  background-color: var(--hover-color);
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.project-item button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  outline: none;
+  border: none;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: inherit;
+  color: inherit;
+  font-weight: 700;
+}
+
+.project-item button:hover {
+  background-color: var(--danger);
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+/* content */
+.content {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  background-color: var(--primary-color);
+  padding: 50px;
+}
+
+.content .projecttitle {
+  font-size: 48px;
+  color: var(--secondary-color);
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.content .projecttitle button {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  outline: none;
+  border: none;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.content .projecttitle button:hover {
+  background-color: var(--hover-color);
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+/* todolist */
+.todolist {
+  margin-left: 50px;
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 400;
+  width: 70ch;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* todoitem */
+.todoitem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.todoitem:hover {
+  background-color: var(--hover-color);
+}
+/* todo title */
+.todoitem .todotitle {
+  width: 60ch;
+  /* background-color: #511; */
+}
+
+/* remove todo button */
+.todoitem .removetodobtn {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 30px;
+  color: var(--secondary-color);
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  background-color: var(--accent-color);
+}
+
+.removetodobtn:hover {
+  background-color: var(--danger);
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+/* check todo item button */
+.checkbtn {
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary-color);
+  outline: none;
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+
+  position: relative;
+  display: inline-block;
+}
+
+.checkbtn.done::before {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 50%;
+  width: 3px;
+  background-color: var(--secondary-color);
+  content: "";
+  transform: translateX(10px) rotate(-45deg);
+  transform-origin: left bottom;
+}
+
+.checkbtn.done::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background-color: var(--secondary-color);
+  content: "";
+  transform: translateX(10px) rotate(-45deg);
+  transform-origin: left bottom;
+}
+
+.checkbtn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.checkbtn:hover::before {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 50%;
+  width: 3px;
+  background-color: var(--accent-color);
+  content: "";
+  transform: translateX(10px) rotate(-45deg);
+  transform-origin: left bottom;
+}
+
+.checkbtn:hover::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background-color: var(--accent-color);
+  content: "";
+  transform: translateX(10px) rotate(-45deg);
+  transform-origin: left bottom;
+}
+
+/* todo item done */
+.todotitle.done {
+  text-decoration: line-through;
+}
