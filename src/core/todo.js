@@ -1,7 +1,7 @@
 export default function createToDo({ title, duedate, priority, status }) {
   // Data Fields
   let _title = title;
-  let _duedate = duedate;
+  let _duedate = new Date(duedate);
   let _priority = priority;
   let _status = status;
 
@@ -20,7 +20,7 @@ export default function createToDo({ title, duedate, priority, status }) {
   };
 
   const setDueDate = (duedate) => {
-    _duedate = duedate;
+    _duedate = new Date(duedate);
   };
 
   //   priority getter and setter
@@ -41,6 +41,14 @@ export default function createToDo({ title, duedate, priority, status }) {
     _status = status;
   };
 
+  // edit a todo
+  const edit = ({ title, duedate, priority, status }) => {
+    setTitle(title);
+    setDueDate(duedate);
+    setPriority(priority);
+    setStatus(status);
+  };
+
   return {
     getTitle,
     setTitle,
@@ -50,5 +58,6 @@ export default function createToDo({ title, duedate, priority, status }) {
     setPriority,
     getStatus,
     setStatus,
+    edit,
   };
 }
