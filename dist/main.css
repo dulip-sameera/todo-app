@@ -64,31 +64,6 @@
   gap: 20px;
 }
 
-/* today, upcoming */
-.btn {
-  width: 80%;
-  height: 100px;
-  outline: none;
-  background-color: var(--accent-color);
-  border: none;
-  border-radius: 10px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-
-  font-size: 32px;
-  color: var(--primary-color);
-  font-weight: 700;
-}
-
-.btn:hover {
-  background-color: var(--hover-color);
-  cursor: pointer;
-  color: var(--secondary-color);
-}
-
 /* projects */
 .projects {
   width: 80%;
@@ -109,6 +84,9 @@
   margin-right: 5px;
 }
 
+.project-head span:hover {
+  cursor: default;
+}
 .project-head button {
   border-radius: 50%;
   width: 45px;
@@ -190,6 +168,10 @@
   display: flex;
   align-items: center;
   gap: 30px;
+}
+
+.projecttitle:hover {
+  cursor: default;
 }
 
 .content .projecttitle button {
