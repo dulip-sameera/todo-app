@@ -45,6 +45,12 @@ function retrieve() {
 // remove a given project from the localStorage
 function remove(projectName) {
   localStorage.removeItem(projectName);
+
+  // remove project name from name list
+  const names = JSON.parse(localStorage.getItem("projectNameList"));
+  const index = names.indexOf(projectName);
+  names.splice(index, 1);
+  localStorage.setItem("projectNameList", JSON.stringify(names));
 }
 
 // clear all localStorage
