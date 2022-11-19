@@ -1,5 +1,6 @@
 import Storage from "../utils/storage.js";
 import createProjectList from "../core/project_list.js";
+import generateProject from "./projects.js";
 
 function createProjectListFromLocalStorage() {
   const projectList = createProjectList();
@@ -11,12 +12,14 @@ function createProjectListFromLocalStorage() {
 
   for (let i = 0; i < storedProjects.projectNameList.length; i++) {
     const element = storedProjects.projectNameList[i];
+    // console.log(element);
     projectList.add(element);
   }
 
   for (let i = 0; i < projectList.getAll().length; i++) {
     const singleProject = projectList.getByIndex(i);
     const todoList = storedProjects.projects[singleProject.getTitle()];
+    // console.log(todoList);
     for (let j = 0; j < todoList.length; j++) {
       singleProject.addToDo({
         title: todoList[j].title,
@@ -43,7 +46,7 @@ function pageLoad() {
     ? createProjectListFromLocalStorage()
     : createProjectList();
 
-  return projectList;
+  generateProject(projectList);
 }
 
 export { pageLoad };
