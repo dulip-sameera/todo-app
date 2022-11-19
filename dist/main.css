@@ -124,6 +124,10 @@
   border-radius: 5px;
 }
 
+.project-title {
+  width: 100%;
+}
+
 .project-item:hover {
   background-color: var(--hover-color);
   color: var(--secondary-color);
@@ -290,7 +294,7 @@
   transform: scale(1.1);
 }
 
-.checkbtn:hover::before {
+.checkbtn:not(.done):hover::before {
   position: absolute;
   left: 0;
   top: 50%;
@@ -302,7 +306,7 @@
   transform-origin: left bottom;
 }
 
-.checkbtn:hover::after {
+.checkbtn:not(.done):hover::after {
   position: absolute;
   left: 0;
   bottom: 0;
