@@ -1,5 +1,7 @@
 import storage from "../utils/storage";
+import generateContent from "./content";
 import { pageLoad } from "./page_load";
+import eventBind from "../utils/event_bind";
 
 function generateProject(projectList) {
   // cache DOM
@@ -18,7 +20,8 @@ function generateProject(projectList) {
   // cache DOM
   const removeProjectBtns = document.querySelectorAll(".removeProjectBtn");
   const addProjectBtn = document.getElementById("addProjectBtn");
-  const projectItems = document.querySelectorAll(".project-title");
+  const projectTitle = document.querySelectorAll(".project-title");
+  const projectItem = document.querySelectorAll("project-item");
   // event binds
   eventBind("click", addProjectBtn, () => {
     addProject(projectList);
@@ -26,8 +29,8 @@ function generateProject(projectList) {
   eventBind("click", removeProjectBtns, (e) => {
     removeProject(e, projectList);
   });
-  eventBind("click", projectItems, (e) => {
-    loadToDos(projectList.getByIndex(e.target.attributes["data-index"].value));
+  eventBind("click", projectTitle, (e) => {
+    loadToDos(projectList, e.target.attributes["data-index"].value);
   });
 }
 
@@ -83,19 +86,10 @@ function removeProject(e, projectList) {
   pageLoad();
 }
 
-function loadToDos(project) {
+function loadToDos(projectList, index) {
   //   pass project to content page
-  console.log(project);
-}
-
-function eventBind(event, element, action) {
-  if (element instanceof NodeList) {
-    for (let i = 0; i < element.length; i++) {
-      element[i].addEventListener(event, action);
-    }
-    return;
-  }
-  element.addEventListener(event, action);
+  console.log(projectList, index);
+  generateContent(projectList, index);
 }
 
 export default generateProject;
