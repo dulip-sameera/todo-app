@@ -5,7 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo</title>
+    <link rel="stylesheet" href="main.css" />
     <script src="./main.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div id="container" class="container">
+      <div class="header"><div class="brand">TODO</div></div>
+      <div class="sidebar">
+        <div class="projects" id="projectsDisplay">
+          <!-- projects generated from js added to here -->
+        </div>
+      </div>
+      <div id="content" class="content">
+        <div class="projecttitle">
+          <span>Project Item</span><button class="addtodobtn">+</button>
+        </div>
+        <div class="todolist">
+          <div class="todoitem">
+            <button class="checkbtn done"></button>
+            <span class="todotitle done">Buy Banana</span>
+            <button class="removetodobtn">-</button>
+          </div>
+          <div class="todoitem">
+            <button class="checkbtn"></button>
+            <span class="todotitle">Buy a gun</span>
+            <button class="removetodobtn">-</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
