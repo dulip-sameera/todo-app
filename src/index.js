@@ -1,103 +1,74 @@
-// import createProjectList from "./core/project_list.js";
-// import Storage from "./utils/storage.js";
+// import { isEqual, format } from "date-fns";
 
-// const project_list = createProjectList();
+// const date = format(new Date(), "yyyy-MM-dd");
 
-// const todo1 = {
-//   title: "Banana",
-//   duedate: new Date("2022-12-01"),
-//   priority: "HIGH",
-//   status: true,
-// };
-
-// const todo2 = {
-//   title: "Jam",
-//   duedate: new Date("2022-12-01"),
-//   priority: "LOW",
-//   status: true,
-// };
-
-// const todo3 = {
-//   title: "Rice",
-//   duedate: new Date("2022-12-01"),
-//   priority: "HIGH",
-//   status: true,
-// };
-
-// const todo4 = {
-//   title: "Pack Clothes",
-//   duedate: new Date("2022-12-01"),
-//   priority: "HIGH",
-//   status: true,
-// };
-
-// const todo5 = {
-//   title: "Pack water bottle",
-//   duedate: new Date("2022-12-01"),
-//   priority: "HIGH",
-//   status: true,
-// };
-
-// const todo6 = {
-//   title: "Pack a jacket",
-//   duedate: new Date("2022-12-01"),
-//   priority: "HIGH",
-//   status: true,
-// };
-
-// const todo7 = {
-//   title: "Pack a Gun",
-//   duedate: new Date("2022-12-01"),
-//   priority: "NORMAL",
-//   status: true,
-// };
-
-// const todo8 = {
-//   title: "Custom",
-//   duedate: new Date("2022-12-01"),
-//   priority: "NORMAL",
-//   status: true,
-// };
-
-// project_list.add("Grocery");
-
-// project_list.getByIndex(0).addToDo(todo1);
-// project_list.getByIndex(0).addToDo(todo2);
-// project_list.getByIndex(0).addToDo(todo3);
-
-// project_list.add("Pack Bag");
-// project_list.getByIndex(1).addToDo(todo4);
-// project_list.getByIndex(1).addToDo(todo5);
-// project_list.getByIndex(1).addToDo(todo6);
-// project_list.getByIndex(1).addToDo(todo7);
-
-// project_list.add("Custom");
-// project_list.getByIndex(2).addToDo(todo8);
-
-// Storage.store(project_list.getAll());
-// // Storage.remove("Pack Bag");
-// // Storage.clear();
-// // console.log(project_list.getAll()[0].getAllToDos());
-
-// const projectList = createProjectList();
-// const storedProjects = Storage.retrieve();
-
-// for (let i = 0; i < storedProjects.projectNameList.length; i++) {
-//   const element = storedProjects.projectNameList[i];
-//   projectList.add(element);
+// console.log(isEqual(new Date(date), new Date("2022-11-17")));
+// console.log(new Date());
+// console.log(new Date("2022-11-17"));
+// function (date) {
+//   if ()
 // }
+import createProjectList from "./core/project_list";
+import Storage from "./utils/storage";
+import Priority from "./utils/priority";
+import { pageLoad } from "./ui/page_load";
+import Status from "./utils/status";
 
-// for (let i = 0; i < projectList.getAll().length; i++) {
-//   const singleProject = projectList.getByIndex(i);
-//   const todoList = storedProjects.projects[singleProject.getTitle()];
-//   for (let j = 0; j < todoList.length; j++) {
-//     singleProject.addToDo({
-//       title: todoList[j].title,
-//       duedate: new Date(todoList[j].duedate),
-//       priority: todoList[j].priority,
-//       status: todoList[j].status,
-//     });
-//   }
-// }
+const projectList = createProjectList();
+projectList.add("Grocery");
+projectList.add("Pack Bag");
 
-// console.log(projectList.getAll()[0].getAllToDos()[0].getTitle());
+const item1 = {
+  title: "1",
+  duedate: "2022-11-17",
+  priority: Priority.LOW,
+  status: Status.ACTIVE,
+};
+
+const item2 = {
+  title: "2",
+  duedate: "2022-11-17",
+  priority: Priority.LOW,
+  status: Status.ACTIVE,
+};
+
+const item3 = {
+  title: "3",
+  duedate: "2022-11-18",
+  priority: Priority.LOW,
+  status: Status.ACTIVE,
+};
+const item4 = {
+  title: "4",
+  duedate: "2022-11-18",
+  priority: Priority.LOW,
+  status: Status.ACTIVE,
+};
+const item5 = {
+  title: "5",
+  duedate: "2022-11-18",
+  priority: Priority.LOW,
+  status: Status.ACTIVE,
+};
+const item6 = {
+  title: "Buy Banana",
+  duedate: "2022-11-18",
+  priority: Priority.LOW,
+  status: Status.INACTIVE,
+};
+
+projectList.getByIndex(0).addToDo(item1);
+projectList.getByIndex(0).addToDo(item2);
+projectList.getByIndex(0).addToDo(item3);
+
+projectList.getByIndex(1).addToDo(item4);
+projectList.getByIndex(1).addToDo(item5);
+projectList.getByIndex(1).addToDo(item6);
+// console.log(projectList.getByIndex(0).getAllToDos().getList()[0].getDueDate());
+
+Storage.clear();
+
+Storage.store(projectList);
+
+// console.log(pageLoad().newProjectList.getByIndex(0).getTitle());
+pageLoad();
